@@ -6,9 +6,8 @@ from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.llms.groq import Groq
 from typing import List, Dict
 
-load_dotenv()
-api_key = os.environ.get("GROQ_API_KEY")
-st.set_option('api_key', os.environ['GROQ_API_KEY'])
+# load_dotenv()
+api_key = st.secrets["GROQ_API_KEY"]
 
 # Initialize the embedding model
 embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
