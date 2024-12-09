@@ -1,4 +1,5 @@
 import os
+import streamlit as st
 from dotenv import load_dotenv
 from llama_index.core import StorageContext, load_index_from_storage, VectorStoreIndex, Settings
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
@@ -7,6 +8,7 @@ from typing import List, Dict
 
 load_dotenv()
 api_key = os.environ.get("GROQ_API_KEY")
+st.set_option('api_key', os.environ['GROQ_API_KEY'])
 
 # Initialize the embedding model
 embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")

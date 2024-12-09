@@ -1,9 +1,8 @@
-import os
 from engines import CodeSearchSystem
 import streamlit as st
 from prompts import nature_prompt, bodypart_prompt, source_prompt, event_prompt
 
-st.set_option('api_key', os.environ['GROQ_API_KEY'])
+
 
 categories = [
     {"name": "Nature of Injury/Illness", "prompt": nature_prompt, "persist_dir": "index/nature_codes"},
