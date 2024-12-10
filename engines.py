@@ -8,6 +8,7 @@ from typing import List, Dict
 
 # load_dotenv()
 api_key = st.secrets["GROQ_API_KEY"]
+print(api_key)
 
 # Initialize the embedding model
 embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
