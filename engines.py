@@ -11,7 +11,7 @@ api_key = st.secrets["GROQ_API_KEY"]
 
 # Initialize the embedding model
 embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
-llm = Groq(model='llama-3.1-8b-instant', api_key=api_key, temperature=0.1)
+llm = Groq(model='llama-3.3-70b-versatile', api_key=api_key, temperature=0.1)
 
 # Configure global settings
 Settings.embed_model = embed_model
