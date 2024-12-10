@@ -7,7 +7,7 @@ from llama_index.llms.groq import Groq
 from typing import List, Dict
 
 # load_dotenv()
-api_key = st.secrets["GROQ_API_KEY"]
+api_key = st.secrets.GROQ_API_KEY
 print(api_key)
 
 # Initialize the embedding model
