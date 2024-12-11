@@ -30,7 +30,6 @@ def app():
                 Please include nature of injury/ illness, part of the body affected, source of the injury/ illness and the event/ exposure that led to the injury/ illness in the description. 
     """)
 
-
     with st.form(key="oiics_coder_form"):
         query = st.text_area("Enter a description of the Injury/ Illness:",
                             value=default_desc)
