@@ -27,7 +27,7 @@ st.markdown("""
 
 with st.form(key="oiics_coder_form"):
     query = st.text_area("Enter a description of the Injury/ Illness:",
-                         value=default_desc, key='query')
+                         value=default_desc)
     submit_button = st.form_submit_button()
 
 if submit_button:
@@ -44,7 +44,7 @@ if submit_button:
                 # st.write(category)
                 # print(tabs[i])
                 search_system = CodeSearchSystem(persist_dir=category["persist_dir"])
-                results = search_system.search(st.session_state['query'], prompt=category['prompt'],top_k=3)
+                results = search_system.search(query, prompt=category['prompt'],top_k=3)
                 for result in results:
                     result_str = f"**Code: {result['code']}** - {result['title']} (_Score_: _{result['score']:.3f}_)\n\n**Definition**: {result['definition']}"
                     if len(result['includes'].strip())>0:
