@@ -1,5 +1,4 @@
 .venv
 .streamlit
-data
 coder.ipynb
 ingest.ipynb
