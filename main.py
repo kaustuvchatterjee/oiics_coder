@@ -6,6 +6,9 @@ st.set_page_config(
     page_title='Home Page',
 )
 
+if 'query' not in st.session_state:
+    st.session_state['query'] = ''
+
 categories = [
     {"name": "Nature of Injury/Illness", "prompt": nature_prompt, "persist_dir": "index/nature_codes"},
     {"name": "Part of Body affected", "prompt": bodypart_prompt, "persist_dir": "index/part_codes"},
@@ -27,10 +30,11 @@ st.markdown("""
 
 with st.form(key="oiics_coder_form"):
     query = st.text_area("Enter a description of the Injury/ Illness:",
-                         value=default_desc)
+                         value=default_desc, key='query')
     submit_button = st.form_submit_button()
 
 if submit_button:
+    st.session_state['query'] = query
     st.subheader('Possible Matches:')
     with st.spinner('Searching for possible matches...'):
         
@@ -44,7 +48,7 @@ if submit_button:
                 # st.write(category)
                 # print(tabs[i])
                 search_system = CodeSearchSystem(persist_dir=category["persist_dir"])
-                results = search_system.search(query, prompt=category['prompt'],top_k=3)
+                results = search_system.search(st.session_state['query'], prompt=category['prompt'],top_k=3)
                 for result in results:
                     result_str = f"**Code: {result['code']}** - {result['title']} (_Score_: _{result['score']:.3f}_)\n\n**Definition**: {result['definition']}"
                     if len(result['includes'].strip())>0:
