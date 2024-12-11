@@ -2,7 +2,9 @@ from engines import CodeSearchSystem
 import streamlit as st
 from prompts import nature_prompt, bodypart_prompt, source_prompt, event_prompt
 
-
+st.set_page_config(
+    page_title='Home Page',
+)
 
 categories = [
     {"name": "Nature of Injury/Illness", "prompt": nature_prompt, "persist_dir": "index/nature_codes"},
@@ -17,6 +19,11 @@ default_desc = "A worker sustained a laceration to the left hand caused by a sha
 # 
 st.title("OIICS Coding Assistant")
 st.write("An AI powered coding assistant for classifying occupational injuries and illness using OIICS ver 3.0")
+st.markdown("""
+            **Instructions**:
+            Please include nature of injury/ illness, part of the body affected, source of the injury/ illness and the event/ exposure that led to the injury/ illness in the description. 
+""")
+
 
 with st.form(key="oiics_coder_form"):
     query = st.text_area("Enter a description of the Injury/ Illness:",
