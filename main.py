@@ -15,7 +15,7 @@ categories = [
 default_desc = "A worker sustained a laceration to the left hand caused by a sharp tool while cutting materials."
 
 # 
-st.title("OIICS Coder")
+st.title("OIICS Coding Assistant")
 st.write("An AI powered coding assistant for classifying occupational injuries and illness using OIICS ver 3.0")
 
 with st.form(key="oiics_coder_form"):
@@ -24,8 +24,9 @@ with st.form(key="oiics_coder_form"):
     submit_button = st.form_submit_button()
 
 if submit_button:
+    st.subheader('Possible Matches:')
     with st.spinner('Searching for possible matches...'):
-        st.subheader('Possible Matches:')
+        
         tab_list = [category['name'] for category in categories]
         tabs = st.tabs(tab_list)
 
