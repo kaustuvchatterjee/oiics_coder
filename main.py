@@ -6,6 +6,9 @@ st.set_page_config(
     page_title='Home Page',
 )
 
+if 'query_state' not in st.session_state:
+    st.session.query_state = False
+
 categories = [
     {"name": "Nature of Injury/Illness", "prompt": nature_prompt, "persist_dir": "index/nature_codes"},
     {"name": "Part of Body affected", "prompt": bodypart_prompt, "persist_dir": "index/part_codes"},
@@ -30,7 +33,7 @@ with st.form(key="oiics_coder_form"):
                          value=default_desc)
     submit_button = st.form_submit_button()
 
-if submit_button:
+if submit_button or st.session_state.query_state:
     st.subheader('Possible Matches:')
     with st.spinner('Searching for possible matches...'):
         
