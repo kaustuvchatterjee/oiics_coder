@@ -14,7 +14,7 @@ categories = [
 ]
 
 
-default_desc = "A worker sustained a laceration to the left hand caused by a sharp tool while cutting materials."
+default_desc = "A worker sustained a laceration to the left hand caused by a sharp tool while cutting materials. There was no injury to internal structures or organs."
 
 # 
 st.title("OIICS Coding Assistant")
