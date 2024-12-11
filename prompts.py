@@ -61,7 +61,6 @@ For the description, provide the Source of the injury Code.
 Some examples are - chemicals, containers, furnitures, fixtures, machinery, persons, plants, minerals, surfaces, tools, etc.
 
 Identify the object, substance, or exposure that directly produced the injury/illness
-Distinguish between primary and secondary sources when applicable
 Consider both physical objects and environmental conditions
 
 Quality Checks
