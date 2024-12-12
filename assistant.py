@@ -42,22 +42,25 @@ def app():
             tab_list = [category['name'] for category in categories]
             tabs = st.tabs(tab_list)
 
+            try:
+                i = 0
+                for category in categories:
+                    with tabs[i]:
+                        # st.write(category)
+                        # print(tabs[i])
+                        search_system = CodeSearchSystem(persist_dir=category["persist_dir"])
+                        results = search_system.search(query, prompt=category['prompt'],top_k=3)
+                        for result in results:
+                            result_str = f"**Code: {result['code']}** - {result['title']} (_Score_: _{result['score']:.3f}_)\n\n**Definition**: {result['definition']}"
+                            if len(result['includes'].strip())>0:
+                                result_str += f"\n\n__Includes__: {result['includes']}"
+                            if len(result['excludes'].strip())>0:
+                                result_str += f"\n\n__Excludes__: {result['excludes']}"
+                            
 
-            i = 0
-            for category in categories:
-                with tabs[i]:
-                    # st.write(category)
-                    # print(tabs[i])
-                    search_system = CodeSearchSystem(persist_dir=category["persist_dir"])
-                    results = search_system.search(query, prompt=category['prompt'],top_k=3)
-                    for result in results:
-                        result_str = f"**Code: {result['code']}** - {result['title']} (_Score_: _{result['score']:.3f}_)\n\n**Definition**: {result['definition']}"
-                        if len(result['includes'].strip())>0:
-                            result_str += f"\n\n__Includes__: {result['includes']}"
-                        if len(result['excludes'].strip())>0:
-                            result_str += f"\n\n__Excludes__: {result['excludes']}"
+                            st.markdown(result_str)
+                            st.divider()
 
-                        st.markdown(result_str)
-                        st.divider()
-
-                    i+=1
+                        i+=1
+            except:
+                st.markdown('Error! Unable to search for codes. Please try again later.')
